@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🧪 Ejecutando pruebas de la aplicación Books..."
+echo "🧪 Ejecutando pruebas de LabKubernetes..."
 
 # Variables de entorno
 export API_URL=${API_URL:-"http://localhost:3000"}

@@ -1,5 +1,5 @@
 @echo off
-echo 🧪 Ejecutando pruebas de la aplicación Books...
+echo 🧪 Ejecutando pruebas de LabKubernetes...
 
 REM Variables de entorno
 if "%API_URL%"=="" set API_URL=http://localhost:3000

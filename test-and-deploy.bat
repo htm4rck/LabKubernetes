@@ -1,5 +1,5 @@
 @echo off
-echo 🧪 Ejecutando pruebas automatizadas antes del despliegue...
+echo 🧪 LabKubernetes - Ejecutando pruebas automatizadas antes del despliegue...
 
 REM Construir y ejecutar pruebas
 docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit

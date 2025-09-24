@@ -1,4 +1,4 @@
-# Backend - Books API
+# Backend - LabKubernetes API
 
 API REST desarrollada con NestJS para la gestión de libros y categorías.
 

@@ -1,4 +1,4 @@
-# Proyecto Kubernetes - Backend NestJS + Frontend Angular
+# LabKubernetes - Backend NestJS + Frontend Angular
 
 Este proyecto implementa una aplicación completa de gestión de libros y categorías usando NestJS como backend y Angular como frontend, con SQLite como base de datos. El objetivo principal es demostrar la containerización con Docker y el despliegue en Kubernetes.
 
@@ -121,12 +121,12 @@ El proyecto incluye Dockerfiles optimizados para producción:
 
 ```bash
 # Construir imágenes individualmente
-docker build -t books-backend ./back
-docker build -t books-frontend ./front
+docker build -t labkubernetes-backend ./back
+docker build -t labkubernetes-frontend ./front
 
 # Ejecutar contenedores individuales
-docker run -p 3000:3000 books-backend
-docker run -p 4200:80 books-frontend
+docker run -p 3000:3000 labkubernetes-backend
+docker run -p 4200:80 labkubernetes-frontend
 ```
 
 ## ☸️ Kubernetes

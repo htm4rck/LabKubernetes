@@ -20,8 +20,10 @@ async function bootstrap() {
 
   // Swagger
   const config = new DocumentBuilder()
-    .setTitle('Books API')
-    .setDescription('API para gestión de libros y categorías')
+    .setTitle('LabKubernetes API')
+    .setDescription(
+      'API para gestión de libros y categorías - Laboratorio Kubernetes',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
@@ -36,4 +38,8 @@ async function bootstrap() {
   console.log(`🚀 Aplicación ejecutándose en http://localhost:${port}`);
   console.log(`📚 Swagger disponible en http://localhost:${port}/api`);
 }
-bootstrap();
+
+bootstrap().catch((error) => {
+  console.error('❌ Error al iniciar la aplicación:', error);
+  process.exit(1);
+});

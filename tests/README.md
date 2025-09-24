@@ -1,4 +1,4 @@
-# Pruebas de la Aplicación Books
+# Pruebas de LabKubernetes
 
 Este directorio contiene todas las pruebas para la aplicación de libros y categorías.
 

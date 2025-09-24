@@ -1,5 +1,5 @@
 {
-  "name": "app-test",
+  "name": "labkubernetes-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

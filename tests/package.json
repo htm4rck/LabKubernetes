@@ -1,5 +1,5 @@
 {
-  "name": "books-app-tests",
+  "name": "labkubernetes-tests",
   "version": "1.0.0",
   "description": "Pruebas para la aplicación de libros",
   "scripts": {

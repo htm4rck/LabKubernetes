@@ -1,10 +1,10 @@
 @echo off
-echo 🚀 Desplegando aplicación Books en Kubernetes...
+echo 🚀 Desplegando LabKubernetes en Kubernetes...
 
 REM Construir imágenes Docker
 echo 📦 Construyendo imágenes Docker...
-docker build -t books-backend:latest ./back
-docker build -t books-frontend:latest ./front
+docker build -t labkubernetes-backend:latest ./back
+docker build -t labkubernetes-frontend:latest ./front
 
 REM Aplicar manifiestos de Kubernetes
 echo ☸️ Aplicando manifiestos de Kubernetes...

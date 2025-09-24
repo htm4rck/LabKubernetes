@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Books App';
+  title = 'LabKubernetes';
 }
