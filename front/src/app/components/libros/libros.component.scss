@@ -1,0 +1,23 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn {
+  margin-right: 8px;
+}
+
+.card-title {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}

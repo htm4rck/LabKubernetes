@@ -1,0 +1,148 @@
+<div class="container">
+  <h2>Gestión de Libros</h2>
+  
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <button 
+        class="btn btn-primary" 
+        (click)="mostrarNuevoLibro()"
+        data-testid="btn-nuevo-libro">
+        Nuevo Libro
+      </button>
+    </div>
+    <div class="col-md-4">
+      <select 
+        class="form-select" 
+        [(ngModel)]="filtroCategoria"
+        data-testid="filtro-categoria">
+        <option value="0">Todas las categorías</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Buscar por título o autor..."
+        [(ngModel)]="busqueda"
+        data-testid="input-buscar">
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div *ngIf="mostrarFormulario" class="card mb-4">
+    <div class="card-header">
+      <h5>{{ libroEditando ? 'Editar' : 'Nuevo' }} Libro</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="guardarLibro()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Título:</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="nuevoLibro.titulo"
+              name="titulo"
+              required
+              data-testid="input-titulo">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Autor:</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="nuevoLibro.autor"
+              name="autor"
+              required
+              data-testid="input-autor">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ISBN:</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [(ngModel)]="nuevoLibro.isbn"
+              name="isbn"
+              required
+              data-testid="input-isbn">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Categoría:</label>
+            <select 
+              class="form-select" 
+              [(ngModel)]="nuevoLibro.categoriaId"
+              name="categoriaId"
+              required
+              data-testid="select-categoria">
+              <option value="0">Seleccionar categoría</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{ categoria.nombre }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <button 
+          type="submit" 
+          class="btn btn-success me-2"
+          [disabled]="nuevoLibro.categoriaId === 0"
+          data-testid="btn-guardar">
+          Guardar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-secondary" 
+          (click)="cancelar()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de libros -->
+  <div class="card">
+    <div class="card-header">
+      <h5>Libros ({{ librosFiltrados.length }})</h5>
+    </div>
+    <div class="card-body" data-testid="libros-list">
+      <div *ngIf="librosFiltrados.length === 0" class="text-center text-muted">
+        No hay libros que coincidan con los filtros
+      </div>
+      <div class="row">
+        <div *ngFor="let libro of librosFiltrados" class="col-md-6 mb-3" data-testid="libro-item">
+          <div class="card h-100">
+            <div class="card-body" data-testid="libro-detalle">
+              <h6 class="card-title" data-testid="libro-titulo">{{ libro.titulo }}</h6>
+              <p class="card-text">
+                <strong>Autor:</strong> <span data-testid="libro-autor">{{ libro.autor }}</span><br>
+                <strong>ISBN:</strong> <span data-testid="libro-isbn">{{ libro.isbn }}</span><br>
+                <strong>Categoría:</strong> {{ getNombreCategoria(libro.categoriaId) }}
+              </p>
+              <button 
+                class="btn btn-sm btn-outline-primary me-2" 
+                (click)="editarLibro(libro)"
+                data-testid="btn-editar">
+                Editar
+              </button>
+              <button 
+                class="btn btn-sm btn-outline-info me-2" 
+                data-testid="btn-ver-detalle">
+                Ver Detalle
+              </button>
+              <button 
+                class="btn btn-sm btn-outline-danger" 
+                (click)="eliminarLibro(libro.id)"
+                data-testid="btn-eliminar">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

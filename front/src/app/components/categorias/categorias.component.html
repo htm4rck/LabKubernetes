@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>Gestión de Categorías</h2>
+  
+  <button 
+    class="btn btn-primary mb-3" 
+    (click)="mostrarNuevaCategoria()"
+    data-testid="btn-nueva-categoria">
+    Nueva Categoría
+  </button>
+
+  <!-- Formulario -->
+  <div *ngIf="mostrarFormulario" class="card mb-4">
+    <div class="card-header">
+      <h5>{{ categoriaEditando ? 'Editar' : 'Nueva' }} Categoría</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="guardarCategoria()">
+        <div class="mb-3">
+          <label class="form-label">Nombre:</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="nuevaCategoria.nombre"
+            name="nombre"
+            required
+            data-testid="input-nombre">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descripción:</label>
+          <textarea 
+            class="form-control" 
+            [(ngModel)]="nuevaCategoria.descripcion"
+            name="descripcion"
+            required
+            data-testid="input-descripcion">
+          </textarea>
+        </div>
+        <button 
+          type="submit" 
+          class="btn btn-success me-2"
+          data-testid="btn-guardar">
+          Guardar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-secondary" 
+          (click)="cancelar()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de categorías -->
+  <div class="card">
+    <div class="card-header">
+      <h5>Categorías</h5>
+    </div>
+    <div class="card-body" data-testid="categorias-list">
+      <div *ngIf="categorias.length === 0" class="text-center text-muted">
+        No hay categorías registradas
+      </div>
+      <div *ngFor="let categoria of categorias" class="border-bottom pb-3 mb-3" data-testid="categoria-item">
+        <h6>{{ categoria.nombre }}</h6>
+        <p class="text-muted">{{ categoria.descripcion }}</p>
+        <button 
+          class="btn btn-sm btn-outline-primary me-2" 
+          (click)="editarCategoria(categoria)"
+          data-testid="btn-editar">
+          Editar
+        </button>
+        <button 
+          class="btn btn-sm btn-outline-danger" 
+          (click)="eliminarCategoria(categoria.id)"
+          data-testid="btn-eliminar">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

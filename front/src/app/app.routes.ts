@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
-import {FacturaComponent} from './factura/factura.component';
-import {AppComponent} from './app.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { LibrosComponent } from './components/libros/libros.component';
 
 export const routes: Routes = [
-  {path: '', component: FacturaComponent},
-  {
-    path: 'factura',
-    component: FacturaComponent
-  }
+  { path: '', redirectTo: '/libros', pathMatch: 'full' },
+  { path: 'categorias', component: CategoriasComponent },
+  { path: 'libros', component: LibrosComponent },
+  { path: '**', redirectTo: '/libros' }
 ];

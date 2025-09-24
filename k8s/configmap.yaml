@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: books-app
+data:
+  # Backend configuration
+  PORT: "3000"
+  DB_PATH: "/app/data/database.sqlite"
+  CORS_ORIGIN: "http://localhost:4200"
+  
+  # Frontend configuration
+  API_URL: "http://backend-service:3000"
